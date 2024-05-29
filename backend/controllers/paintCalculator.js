@@ -6,7 +6,6 @@ const calculatePaint = (req, res) => {
       throw new Error('Por favor, forneça medidas para 4 paredes.');
     }
 
-    // Perform calculations based on input walls
     const paintRequired = calculatePaintRequired(walls);
     const cans = calculateCans(paintRequired);
 
@@ -17,9 +16,9 @@ const calculatePaint = (req, res) => {
 };
 
 const calculatePaintRequired = (walls) => {
-  const WINDOW_AREA = 2.4; // 2.00 x 1.20 meters
-  const DOOR_AREA = 1.52; // 0.80 x 1.90 meters
-  const COVERAGE_PER_LITER = 5; // 1 liter covers 5 square meters
+  const WINDOW_AREA = 2.4;
+  const DOOR_AREA = 1.52;
+  const COVERAGE_PER_LITER = 5;
 
   let totalArea = 0;
 
@@ -27,7 +26,6 @@ const calculatePaintRequired = (walls) => {
     const { height, width, windows, doors } = wall;
     let wallArea = height * width;
 
-    // Check business rules
     if (wallArea < 1 || wallArea > 50) {
       throw new Error('A área da parede deve ter entre 1 e 50 metros quadrados.');
     }
